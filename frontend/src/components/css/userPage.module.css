@@ -1,0 +1,167 @@
+:root {
+  --color-dark-teal: #264653;
+  --color-mint-teal: #2a9d8f;
+  --color-sandy-gold: hsl(43, 74%, 66%);
+  --color-sandy-orange: #f4a261;
+  --color-terracotta: #e76f51;
+  --color-white: #ffffff;
+  --color-bg-light: #f7f9fb;
+  --color-text-dark: #2c3e50;
+  --color-text-muted: #7f8c8d;
+  --color-border: #e2e8f0;
+  --shadow-premium: 0 20px 40px rgba(38, 70, 83, 0.12);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 76px;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.seusPins {
+  color: black;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  margin: 16px 0;
+  width: 100%;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1.5px solid var(--color-border);
+}
+
+.divider:not(:empty)::before {
+  margin-right: 12px;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 12px;
+}
+
+.imgUserPins {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.btnEdit {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.btnDelete {
+  background-color: var(--color-error);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btnActions {
+  display: flex;
+  gap: 8px;
+}
+
+.pinsFeed {
+  column-count: 5;
+  column-gap: 16px;
+}
+
+@media (max-width: 1400px) {
+  .pinsFeed {
+    column-count: 4;
+  }
+}
+
+@media (max-width: 1100px) {
+  .pinsFeed {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 800px) {
+  .pinsFeed {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 500px) {
+  .pinsFeed {
+    column-count: 1;
+  }
+}
+
+.pinCard {
+  background: var(--color-white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+
+.pinCard h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 8px;
+}
+
+.pinCard p {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.iconButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #7f8c8d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.iconButton:hover {
+  background-color: #f3f4f6;
+}
+
+.iconButton:first-child:hover {
+  color: #2a9d8f;
+  /* editar */
+}
+
+.iconButton:last-child:hover {
+  color: #e76f51;
+  /* excluir */
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

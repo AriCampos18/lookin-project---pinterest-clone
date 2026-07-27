@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+    id        Int      @id @default(autoincrement())
+    email     String   @unique
+    password  String
+    username  String   @unique
+    status    Boolean  @default(true)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    pins Pin[]
+    comentarios Comentario[]
+    respostas Resposta[]
+}
+
+model Pin {
+    id        Int      @id @default(autoincrement())
+    title     String
+    descricao String
+    image     String
+    user_id   Int
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    user User @relation(fields: [user_id], references: [id])
+
+    comentarios Comentario[]
+}
+
+model Comentario {
+    id        Int      @id @default(autoincrement())
+    user_id Int
+    pin_id Int
+    comentario String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    user User @relation(fields: [user_id], references: [id])
+    pin Pin @relation(fields: [pin_id], references: [id])
+
+    respostas Resposta[]
+}
+
+model Resposta {
+    id        Int      @id @default(autoincrement())
+    user_id Int
+    comentario_id Int
+    resposta String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    user User @relation(fields: [user_id], references: [id])
+    comentario Comentario @relation(fields: [comentario_id], references: [id], onDelete: Cascade)
+}

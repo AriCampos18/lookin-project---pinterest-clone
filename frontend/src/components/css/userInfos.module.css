@@ -1,0 +1,134 @@
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 76px;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.seusPins{
+    color: black;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  margin: 16px 0;
+  width: 100%;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1.5px solid var(--color-border);
+}
+
+.divider:not(:empty)::before {
+  margin-right: 12px;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 12px;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btnDelete{
+    background-color: rgb(240, 38, 38);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btnEdit{
+    background-color: #264653;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.containerModal {
+    position: fixed;
+    inset: 0; /* top, right, bottom e left = 0 */
+
+    background: rgba(0, 0, 0, .5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.modal {
+    width: 450px;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.cancelarEdicao{
+    background-color: rgb(240, 38, 38);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.confirmEditBtn{
+    background-color: #00af1d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+form label{
+  margin-top: 8px;
+  color: black;
+}
+
+form input{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
