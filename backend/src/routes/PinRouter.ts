@@ -1,7 +1,7 @@
 import { Router } from "express";
 import * as PinController from "../controllers/PinController.js";
 import { authenticate } from "../middlewares/AuthMiddleware.js";
-import { upload } from "../../config/multer.js";
+import { upload } from "../config/multer.js";
 
 const router = Router();
 
