@@ -3,6 +3,7 @@ import styles from "../css/userPage.module.css";
 import BuscarPins from "../layouts/BuscarPins/buscarPins";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../../config/api";
 
 export default function UserPage() {
 
@@ -16,7 +17,7 @@ export default function UserPage() {
     const token = localStorage.getItem("token");
 
     async function buscarPinsDoUser() {
-        const dados = await fetch(`http://localhost:3000/pins/userPins`, {
+        const dados = await fetch(`${API_URL}/pins/userPins`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -38,7 +39,7 @@ export default function UserPage() {
 
     async function handleDelete(id: number) {
         if (window.confirm("Tem certeza que deseja apagar este pin?")) {
-            const dados = await fetch(`http://localhost:3000/pins/${id}`, {
+            const dados = await fetch(`${API_URL}/pins/${id}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -106,7 +107,7 @@ export default function UserPage() {
                     <section className={styles.pinsFeed}>
                         {pins.map((pin: any) => (
                             <div key={pin.id} className={styles.pinCard} onClick={() => verPinIndividual(pin.id)}>
-                                <img className={styles.imgUserPins} src={`http://localhost:3000${pin.image}`} alt={pin.title} />
+                                <img className={styles.imgUserPins} src={`${API_URL}${pin.image}`} alt={pin.title} />
                                 <div className={styles.pinInfo}>
                                     {pin.title !== "" && <p>{pin.title}</p>}
                                     <p>{pin.descricao}</p>

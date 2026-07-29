@@ -2,6 +2,7 @@ import Sidebar from "../layouts/sidebar/Sidebar";
 import styles from "../css/criarPin.module.css";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { API_URL } from "../../config/api";
 
 export default function CriarPin() {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ export default function CriarPin() {
         formData.append("description", descricao);
         formData.append("image", imagem);
 
-        const dados = await fetch("http://localhost:3000/pins/criarPin", {
+        const dados = await fetch(`${API_URL}/pins/criarPin`, {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -50,7 +51,7 @@ export default function CriarPin() {
         formData.append("title", titulo);
         formData.append("description", descricao);
 
-        const dados = await fetch(`http://localhost:3000/pins/editarPin/${editingPin.id}`, {
+        const dados = await fetch(`${API_URL}/pins/editarPin/${editingPin.id}`, {
             method: "PUT",
             headers: {
                 "Authorization": `Bearer ${token}`,

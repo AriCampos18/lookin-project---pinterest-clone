@@ -3,10 +3,12 @@ import styles from './../css/home.module.css';
 import BuscarPins from '../layouts/BuscarPins/buscarPins';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from "../../config/api";
 
 export default function HomePage() {
 
     const [pins, setPins] = useState<any[]>([]);
+
     const [loading, setLoading] = useState(true);
     const [pinsFiltrados, setPinsFiltrados] = useState([]);
 
@@ -23,7 +25,7 @@ export default function HomePage() {
     async function carregarPins() {
         const token = localStorage.getItem("token");
 
-        const dados = await fetch("http://localhost:3000/pins", {
+        const dados = await fetch(`${API_URL}pins`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -79,7 +81,7 @@ export default function HomePage() {
                             {pinsFiltrados.map((pin: any) => {
                                 return (
                                     <div key={pin.id} className={styles.pinCard} onClick={() => verPinIndividual(pin.id)}>
-                                        <img className={styles.imgUserPins} src={`http://localhost:3000${pin.image}`} alt={pin.title} />
+                                        <img className={styles.imgUserPins} src={`${API_URL}${pin.image}`} alt={pin.title} />
                                         {pin.title !== "" && <p>{pin.title}</p>}
                                         <a href="#" className={styles.user}
                                             onClick={(e) => {

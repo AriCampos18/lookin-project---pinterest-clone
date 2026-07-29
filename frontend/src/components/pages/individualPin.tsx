@@ -3,6 +3,7 @@ import styles from "../css/individualPin.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { API_URL } from "../../config/api";
 
 type TokenPayload = {
     id: number;
@@ -14,6 +15,7 @@ type TokenPayload = {
 export default function IndividualPin() {
 
     const token = localStorage.getItem("token");
+
     const [pin, setPin] = useState(null);
     const [comentarios, setComentarios] = useState([]);
     const [comentarioEmRespostaId, setComentarioEmRespostaId] = useState<number | null>(null);
@@ -34,7 +36,7 @@ export default function IndividualPin() {
 
     async function buscarPin(){
         
-        const dados = await fetch(`http://localhost:3000/pins/${id}`, {
+        const dados = await fetch(`${API_URL}/pins/${id}`, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
@@ -55,7 +57,7 @@ export default function IndividualPin() {
             return;
         }
         
-        const dados = await fetch(`http://localhost:3000/comentarios/comentar`, {
+        const dados = await fetch(`${API_URL}/comentarios/comentar`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -79,7 +81,7 @@ export default function IndividualPin() {
             return;
         }
 
-        const dados = await fetch(`http://localhost:3000/respostas/responder`, {
+        const dados = await fetch(`${API_URL}/respostas/responder`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -105,7 +107,7 @@ export default function IndividualPin() {
         }
 
         if(confirm("Você deseja editar este comentário?")){
-            const dados = await fetch(`http://localhost:3000/comentarios/${idComentario}`, {
+            const dados = await fetch(`${API_URL}/comentarios/${idComentario}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -126,7 +128,7 @@ export default function IndividualPin() {
 
     async function deletarComentario(idComentario: number){
         if(confirm("Todas as respostas a esse comentário serão apagadas. Deseja continuar?")){
-                const dados = await fetch(`http://localhost:3000/comentarios/${idComentario}`, {
+                const dados = await fetch(`${API_URL}/comentarios/${idComentario}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`
@@ -146,7 +148,7 @@ export default function IndividualPin() {
         }
 
         if(confirm("Você deseja editar esta resposta?")){
-            const dados = await fetch(`http://localhost:3000/respostas/${idResposta}`, {
+            const dados = await fetch(`${API_URL}/respostas/${idResposta}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -167,7 +169,7 @@ export default function IndividualPin() {
 
     async function deletarResposta(idResposta: number){
         if(confirm("Tem certeza que deseja deletar esta resposta?")){
-            const dados = await fetch(`http://localhost:3000/respostas/${idResposta}`, {
+            const dados = await fetch(`${API_URL}/respostas/${idResposta}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`
@@ -196,7 +198,7 @@ export default function IndividualPin() {
                     <div className={styles.pinCard}>
                         <div className={styles.pinHeader}>
                             <div className={styles.imageWrapper}>
-                                <img src={`http://localhost:3000${pin.image}`} alt={pin.title} />
+                                <img src={`${API_URL}${pin.image}`} alt={pin.title} />
                             </div>
                             <div className={styles.pinContent}>
                                 {pin.title !== "" && <h2 className={styles.title}>{pin.title}</h2>}

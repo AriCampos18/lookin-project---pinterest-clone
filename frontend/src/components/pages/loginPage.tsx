@@ -5,6 +5,7 @@ import artImg from '../../assets/images/art.png';
 import natureImg from '../../assets/images/nature.png';
 import styles from '../css/loginPage.module.css';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from "../../config/api";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -76,7 +77,7 @@ export default function LoginPage() {
 
   async function registrar(){
     console.log(name);
-    const user = await fetch("http://localhost:3000/user/create", {
+    const user = await fetch(`${API_URL}/user/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -98,7 +99,7 @@ export default function LoginPage() {
   }
 
   async function login(){
-    const user = await fetch("http://localhost:3000/auth/login", {
+    const user = await fetch(`${API_URL}/auth/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

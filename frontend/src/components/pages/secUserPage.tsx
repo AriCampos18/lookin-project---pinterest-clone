@@ -3,6 +3,7 @@ import styles from "../css/userPage.module.css";
 import BuscarPins from "../layouts/BuscarPins/buscarPins";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { API_URL } from "../../config/api";
 
 export default function UserPage() {
 
@@ -17,7 +18,7 @@ export default function UserPage() {
     const token = localStorage.getItem("token");
 
     async function buscarPinsDoUser() {
-        const dados = await fetch(`http://localhost:3000/pins/userPins/${username}`, {
+        const dados = await fetch(`${API_URL}/pins/userPins/${username}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -62,7 +63,7 @@ export default function UserPage() {
                     <section className={styles.pinsFeed}>
                         {pins.map((pin: any) => (
                             <div key={pin.id} className={styles.pinCard}>
-                                <img className={styles.imgUserPins} src={`http://localhost:3000${pin.image}`} alt={pin.title} />
+                                <img className={styles.imgUserPins} src={`${API_URL}${pin.image}`} alt={pin.title} />
                                 <div className={styles.pinInfo}>
                                     {pin.title !== "" && <p>{pin.title}</p>}
                                     <p>{pin.descricao}</p>

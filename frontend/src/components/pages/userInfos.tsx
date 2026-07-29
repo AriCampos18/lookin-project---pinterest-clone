@@ -2,6 +2,7 @@ import styles from "../css/userInfos.module.css";
 import Sidebar from "../layouts/sidebar/Sidebar";
 import { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
+import { API_URL } from "../../config/api";
 
 export default function UserInfos() {
 
@@ -16,7 +17,7 @@ export default function UserInfos() {
     async function buscarInfosUser(){
         const token = localStorage.getItem("token");
 
-        const dados = await fetch("http://localhost:3000/user/userInfos", {
+        const dados = await fetch(`${API_URL}/user/userInfos`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -37,7 +38,7 @@ export default function UserInfos() {
     async function deletarConta(){
         if(window.confirm("Tem certeza que deseja apagar sua conta? Todos os seus pins serão apagados.")){
             const token = localStorage.getItem("token");
-            const dados = await fetch("http://localhost:3000/user/delete", {
+            const dados = await fetch(`${API_URL}/user/delete`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -65,7 +66,7 @@ export default function UserInfos() {
     async function confirmarEdicao(){
         if(window.confirm("Tem certeza que deseja mudar suas informações?")){
             const token = localStorage.getItem("token");
-            const dados = await fetch("http://localhost:3000/user/edit", {
+            const dados = await fetch(`${API_URL}/user/edit`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
