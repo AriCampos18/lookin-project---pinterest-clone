@@ -362,28 +362,6 @@ export default function LoginPage() {
               )}
             </button>
           </form>
-
-          {/* Social Divider */}
-          <div className={styles.divider}>ou continue com</div>
-
-          {/* Social Login Button */}
-          <div className={styles.socialButtons}>
-            <button 
-              className={styles.socialBtn} 
-              type="button" 
-              onClick={() => { setError(null); setSuccess('Simulando Login com a conta Google...'); }}
-              disabled={loading}
-            >
-              {/* Google Brand Icon */}
-              <svg className={styles.socialIcon} viewBox="0 0 24 24">
-                <path fill="#EA4335" d="M12 5.04c1.66 0 3.2.57 4.38 1.69l3.27-3.27C17.67 1.54 14.98 0 12 0 7.35 0 3.37 2.67 1.44 6.56l3.87 3a7.18 7.18 0 0 1 6.69-4.52z" />
-                <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.34H12v4.45h6.46a5.5 5.5 0 0 1-2.39 3.63l3.7 2.87c2.16-2 3.72-4.94 3.72-8.61z" />
-                <path fill="#FBBC05" d="M5.31 14.44a7.16 7.16 0 0 1 0-4.88l-3.87-3A11.96 11.96 0 0 0 0 12c0 2.01.5 3.9 1.44 5.56l3.87-3.12z" />
-                <path fill="#34A853" d="M12 24c3.24 0 5.97-1.07 7.96-2.91l-3.7-2.87c-1.03.69-2.34 1.1-4.26 1.1-3.45 0-6.37-2.33-7.41-5.46l-3.87 3A11.94 11.94 0 0 0 12 24z" />
-              </svg>
-              <span>Entrar com o Google</span>
-            </button>
-          </div>
         </div>
       </div>
     </div>
