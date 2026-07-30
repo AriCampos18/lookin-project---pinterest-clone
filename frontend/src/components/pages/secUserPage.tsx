@@ -5,9 +5,19 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { API_URL } from "../../config/api";
 
+type Pin = {
+    id: number;
+    title: string;
+    descricao: string;
+    image: string;
+    user: {
+        username: string;
+    };
+}
+
 export default function UserPage() {
 
-    const [pins, setPins] = useState([]);
+    const [pins, setPins] = useState<Pin[]>([]);
     const [loading, setLoading] = useState(true);
 
     const [busca, setBusca] = useState("");

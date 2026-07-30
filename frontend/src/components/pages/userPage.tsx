@@ -5,11 +5,20 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../config/api";
 
+type Pin = {
+    id: number;
+    title: string;
+    descricao: string;
+    image: string;
+    user: {
+        username: string;
+    };
+}
+
 export default function UserPage() {
 
-    const [pins, setPins] = useState([]);
+    const [pins, setPins] = useState<Pin[]>([]);
     const [loading, setLoading] = useState(true);
-    const [editingPin, setEditingPin] = useState(null);
     const [busca, setBusca] = useState("");
 
     const navigate = useNavigate();
@@ -33,7 +42,7 @@ export default function UserPage() {
         }
     }
 
-    async function handleEdit(pin: any) {
+    async function handleEdit(pin: Pin) {
         navigate('/criarPin', { state: { editingPin: pin } });
     }
 

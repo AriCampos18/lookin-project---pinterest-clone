@@ -5,12 +5,22 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from "../../config/api";
 
+type Pin = {
+    id: number;
+    title: string;
+    descricao: string;
+    image: string;
+    user: {
+        username: string;
+    };
+}
+
 export default function HomePage() {
 
-    const [pins, setPins] = useState<any[]>([]);
+    const [pins, setPins] = useState<Pin[]>([]);
 
     const [loading, setLoading] = useState(true);
-    const [pinsFiltrados, setPinsFiltrados] = useState([]);
+    const [pinsFiltrados, setPinsFiltrados] = useState<Pin[]>([]);
 
     const [busca, setBusca] = useState("");
 
@@ -25,7 +35,7 @@ export default function HomePage() {
     async function carregarPins() {
         const token = localStorage.getItem("token");
 
-        const dados = await fetch(`${API_URL}pins`, {
+        const dados = await fetch(`${API_URL}/pins`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

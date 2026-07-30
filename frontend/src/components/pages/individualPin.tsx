@@ -12,12 +12,46 @@ type TokenPayload = {
     iat: number;
 };
 
+
+type Pin = {
+    id: number;
+    title: string;
+    descricao: string;
+    image: string;
+    user: {
+        username: string;
+    };
+}
+
+type Comentario = {
+    id: number;
+    comentario: string;
+    createdAt: string;
+    updatedAt: string;
+    user: {
+        id: number;
+        username: string;
+    };
+    respostas: Resposta[];
+}
+
+type Resposta = {
+    id: number;
+    resposta: string;
+    createdAt: string;
+    updatedAt: string;
+    user: {
+        id: number;
+        username: string;
+    };
+}
+
 export default function IndividualPin() {
 
     const token = localStorage.getItem("token");
 
-    const [pin, setPin] = useState(null);
-    const [comentarios, setComentarios] = useState([]);
+    const [pin, setPin] = useState<Pin | null>(null);
+    const [comentarios, setComentarios] = useState<Comentario[]>([]);
     const [comentarioEmRespostaId, setComentarioEmRespostaId] = useState<number | null>(null);
     const [textoComentario, setTextoComentario] = useState("");
     const [textoResposta, setTextoResposta] = useState("");
