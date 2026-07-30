@@ -26,8 +26,6 @@ export default function HomePage() {
 
     const navigate = useNavigate();
 
-    const token = localStorage.getItem("token");
-
     function verPinsUser(username: string){
         navigate("/secUserPage", {state: {username: username}});
     }

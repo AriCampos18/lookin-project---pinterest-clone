@@ -24,7 +24,7 @@ export default function CriarPin() {
         const formData = new FormData();
         formData.append("title", titulo);
         formData.append("description", descricao);
-        formData.append("image", imagem);
+        formData.append("image", imagem!);
 
         const dados = await fetch(`${API_URL}/pins/criarPin`, {
             method: "POST",
